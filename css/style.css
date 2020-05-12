@@ -1,3 +1,10 @@
 img{
     width: 300px;
 }
+
+
+#myChart{
+    border: 2px solid rgb(15, 184, 99);
+    width: 300px;
+    height: 300px;
+  }
