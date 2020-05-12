@@ -61,7 +61,7 @@ function randomNumber(max){
 function getRandomProduct(){
   parent.textContent = '';
 
-  // call these to get random number on index position
+  // call these to get random number on index positio
   var randomIndex = randomNumber(allProducts.length);
   var randomIndex2 = randomNumber(allProducts.length);
   var randomIndex3 = randomNumber(allProducts.length);
