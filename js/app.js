@@ -3,36 +3,36 @@ var parent = document.getElementById('cat1');
 var allProducts = [];
 var rounds = 25;
 var zero = 0;
-function Products(filePath, alt, title){
-  this.filePath = filePath;
-  this.alt = alt;
-  this.title = title;
+function Products(name, extension){
+  this.filePath = `/img/${name}${extension}`;
+  this.alt = name;
+  this.title = name;
   this.votes = 0;
   this.views = 0;
   allProducts.push(this);
 
 }
 
-new Products('img/bag.jpg', 'bag','bag');
-new Products('img/banana.jpg', 'banana', 'banana');
-new Products('img/bathroom.jpg', 'bathroom', 'bathroom');
-new Products('img/boots.jpg', 'boots', 'boots');
-new Products('img/breakfast.jpg', 'breakfast', 'breakfast');
-new Products('img/bubblegum.jpg', 'bubblegum', 'bubblegum');
-new Products('img/chair.jpg', 'chair', 'chair');
-new Products('img/cthulhu.jpg', 'cthulhu', 'cthulhu');
-new Products('img/dog-duck.jpg', 'dog-duck', 'dog-duck');
-new Products('img/dragon.jpg', 'dragon', 'dragon');
-new Products('img/pen.jpg', 'pen', 'pen');
-new Products('img/pet-sweep.jpg', 'pet-sweep', 'pet-sweep');
-new Products('img/scissors.jpg', 'scissors', 'scissors');
-new Products('img/shark.jpg', 'shark', 'shark');
-new Products('img/sweep.png', 'sweep', 'sweep');
-new Products('img/tauntaun.jpg', 'tauntaun', 'tauntaun');
-new Products('img/unicorn.jpg', 'unicorn', 'unicorn');
-new Products('img/usb.jpg', 'usb', 'usb');
-new Products('img/water-can.jpg', 'water-can', 'water-can');
-new Products('img/wine-glass.jpg', 'wine-glass', 'wine-glass');
+new Products('bag','.jpg');
+new Products('banana','.jpg');
+new Products('bathroom','.jpg');
+new Products('boots','.jpg');
+new Products('breakfast','.jpg');
+new Products('bubblegum','.jpg');
+new Products('chair','.jpg');
+new Products('cthulhu','.jpg');
+new Products('dog-duck','.jpg');
+new Products('dragon','.jpg');
+new Products('pen','.jpg');
+new Products('pet-sweep','.jpg');
+new Products('scissors','.jpg');
+new Products('shark','.jpg');
+new Products('sweep','.png');
+new Products('tauntaun','.jpg');
+new Products('unicorn','.jpg');
+new Products('usb','.jpg');
+new Products('water-can','.jpg');
+new Products('wine-glass','.jpg');
 
 // RENDER
 Products.prototype.banana = function(){
@@ -45,11 +45,11 @@ Products.prototype.banana = function(){
   this.views++;
 };
 
-Products.prototype.results = function(){
-  var elementP= document.createElement('p');
-  elementP.textContent= `${this.title} had ${this.votes} votes and ${this.views} views.`;
-  parent.appendChild(elementP);
-};
+// Products.prototype.results = function(){
+//   var elementP= document.createElement('p');
+//   elementP.textContent= `${this.title} had ${this.votes} votes and ${this.views} views`;
+//   parent.appendChild(elementP);
+// };
 //helper function
 function randomNumber(max){
   // if I dont add 1 I can't get a 10
@@ -61,7 +61,7 @@ function randomNumber(max){
 function getRandomProduct(){
   parent.textContent = '';
 
-  // call these to get random number on index positio
+  // call these to get random number on index positioadd
   var randomIndex = randomNumber(allProducts.length);
   var randomIndex2 = randomNumber(allProducts.length);
   var randomIndex3 = randomNumber(allProducts.length);
@@ -81,7 +81,7 @@ function getRandomProduct(){
 
 getRandomProduct();
 
-
+//this checks for clicks and targets title. Also adds numbers into votes.
 parent.addEventListener('click', function poop(){
   var clickedProducts = event.target.title;
   if(zero < rounds ){
@@ -94,13 +94,102 @@ parent.addEventListener('click', function poop(){
     zero++;
     getRandomProduct();
   } else{
+    //this removes eventListener once the 25 times have looped.
     this.removeEventListener('click', poop);
     for( var j= 0 ; j < allProducts.length; j++){
-      allProducts[j].results();
+      // allProducts[j].results();
+
     }
+    myNamesArray();
+    generateChart();
   }
-
-
-
 });
+// I made this to see if i can render the results in the table.
+// parentElemnt.addEventListener('click',poop);
 
+
+//chartjs
+var names = [];
+var votes = [];
+var views = [];
+
+function myNamesArray(){
+  for(var i = 0; i < allProducts.length; i++){
+    // allProducts[i].title;
+    names.push(allProducts[i].title);
+    votes.push(allProducts[i].votes);
+    views.push(allProducts[i].views);
+
+  }
+}
+
+function generateChart(){
+  var ctx = document.getElementById('myChart').getContext('2d');
+  var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: names,
+      datasets: [{
+        label: '# of Votes',
+        data: votes,
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)'
+        ],
+        borderColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 1
+      },
+      {
+        label: '# of Views',
+        data: views,
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)'
+        ],
+        borderColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+}
+
+/* Set the width of the side navigation to 250px */
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+/* Set the width of the side navigation to 0 */
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}

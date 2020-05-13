@@ -3,20 +3,36 @@
 <head>
     <link href="css/reset.css" type="text" rel="stylesheet"/>
     <link href="css/style.css" type="text/css" rel="stylesheet"/>
+
    
     <title>Bus Mall</title>
 </head>
 <body>
-    
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Clients</a>
+        <a href="#">Contact</a>
+        <a href="#">...Nav in construction...</a>
+       
+      </div>
+      
+      <!-- Use any element to open the sidenav -->
+      <span onclick="openNav()"><strong>Menu</strong></span>
+      
+      <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+      <div id="main">
+        
+      </div>
     <main>
-        <h1>Bus Mall</h1>
-   <section id="cat1">
-
-    </section>
-    
-    </main>
+    <h1>Bus Mall</h1>
+        <section id="cat1">
+        </section>
+        <canvas id="myChart"></canvas>
+     </main>
 </body>
 <footer></footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 <script src="js/app.js"></script>
-
 </html>
