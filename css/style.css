@@ -1,10 +1,99 @@
+body{
+    background-color: lavender;
+}
+
+/* The side navigation menu */
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: #111; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+  }
+  
+  /* The navigation menu links */
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color:  lightcoral ;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  /* When you mouse over the navigation links, change their color */
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  
+  /* Position and style the close button (top right corner) */
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  
+  /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+  #main {
+    transition: margin-left .5s;
+    padding: 20px;
+  }
+  
+  /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+
+
+
+
+
+h1{
+    display: flex;
+    justify-content: space-evenly;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: lightcoral;
+}
+h1:before, h1:after {
+    content: "";
+    flex: 1 1;
+    border-bottom: 2px solid lightcoral;
+    margin: auto;
+}
+p{  color: rgb(177, 113, 137);
+    background-color: rgb(225, 210, 242);
+    border: 1px solid rgb(205, 202, 202);
+    margin-top: 1em;
+
+}
+
+
 img{
+    display: flex;
+    justify-content: right;
     width: 300px;
 }
 
 
 #myChart{
-    border: 2px solid rgb(15, 184, 99);
-    width: 301px;
-    height: 300px;
+    /* background-color: rgb(240, 243, 247); */
+    
+    width: 200px;
+    height: 200px;
   }
+  section{
+      display: flex;
+      justify-content: space-around;
+  }
+  span{
+      color: lightcoral ;
+  }
+  

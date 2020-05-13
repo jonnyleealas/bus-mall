@@ -45,11 +45,11 @@ Products.prototype.banana = function(){
   this.views++;
 };
 
-Products.prototype.results = function(){
-  var elementP= document.createElement('p');
-  elementP.textContent= `${this.title} had ${this.votes} votes and ${this.views} views.`;
-  parent.appendChild(elementP);
-};
+// Products.prototype.results = function(){
+//   var elementP= document.createElement('p');
+//   elementP.textContent= `${this.title} had ${this.votes} votes and ${this.views} views`;
+//   parent.appendChild(elementP);
+// };
 //helper function
 function randomNumber(max){
   // if I dont add 1 I can't get a 10
@@ -97,7 +97,7 @@ parent.addEventListener('click', function poop(){
     //this removes eventListener once the 25 times have looped.
     this.removeEventListener('click', poop);
     for( var j= 0 ; j < allProducts.length; j++){
-      allProducts[j].results();
+      // allProducts[j].results();
 
     }
     myNamesArray();
@@ -130,8 +130,28 @@ function generateChart(){
     data: {
       labels: names,
       datasets: [{
-        label: '# of Votes and Views',
+        label: '# of Votes',
         data: votes,
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)'
+        ],
+        borderColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 1
+      },
+      {
+        label: '# of Views',
         data: views,
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
@@ -162,4 +182,14 @@ function generateChart(){
       }
     }
   });
+}
+
+/* Set the width of the side navigation to 250px */
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+/* Set the width of the side navigation to 0 */
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
 }
