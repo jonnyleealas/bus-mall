@@ -1,8 +1,12 @@
 ('use strict');
+
 var parent = document.getElementById('cat1');
 var allProducts = [];
 var rounds = 25;
 var zero = 0;
+var totalVotes = 0;
+
+
 function Products(name, extension){
   this.filePath = `/img/${name}${extension}`;
   this.alt = name;
@@ -12,6 +16,21 @@ function Products(name, extension){
   allProducts.push(this);
 
 }
+
+// function getTotals(){
+//   var data = localStorage.getItem('votes');
+
+// //   if(data === null){
+// //     totalVotes = 0;
+
+// //   } else {
+// //     var totalData = JSON.parse(data);
+// //     totalVotes = totalData;
+// //   }
+// //   console.log(getTotals);
+// // }
+// // getTotals();
+// // console.log(getTotals);
 
 new Products('bag','.jpg');
 new Products('banana','.jpg');
@@ -36,21 +55,15 @@ new Products('wine-glass','.jpg');
 
 
 
-localStorage.setItem('bitchName', JSON.stringify(allProducts));
 
-var testParse = JSON.parse(localStorage.getItem('bitchName'));
-
+//this makes my constructor into a string
+localStorage.setItem('bitch', JSON.stringify(allProducts));
+var testParse = JSON.parse(localStorage.getItem('bitch'));
 console.log(testParse);
 
 
-
-
-
-
-
-
-
-
+// //name view votes
+// for( var i=0 ; i < testParse.legnth; i++){
 
 
 
@@ -62,7 +75,6 @@ console.log(testParse);
 // var testParse = JSON.parse(localStorage.getItem('test'));
 // console.log(test);
 // console.log(testParse);
-
 // RENDER
 Products.prototype.banana = function(){
   var imageElement = document.createElement('img');
@@ -215,10 +227,10 @@ function generateChart(){
 
 /* Set the width of the side navigation to 250px */
 function openNav() {
-  document.getElementById("mySidenav").style.width = "250px";
+  document.getElementById('mySidenav').style.width = '250px';
 }
 
 /* Set the width of the side navigation to 0 */
 function closeNav() {
-  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById('mySidenav').style.width = '0';
 }
