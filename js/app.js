@@ -112,7 +112,7 @@ function getRandomProduct(){
     randomIndex3 = randomNumber(allProducts.length);
 
   }
-  //BANANA FUNCTION
+ 
   allProducts[randomIndex].banana();
   allProducts[randomIndex2].banana();
   allProducts[randomIndex3].banana();
