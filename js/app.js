@@ -34,6 +34,35 @@ new Products('usb','.jpg');
 new Products('water-can','.jpg');
 new Products('wine-glass','.jpg');
 
+
+
+localStorage.setItem('bitchName', JSON.stringify(allProducts));
+
+var testParse = JSON.parse(localStorage.getItem('bitchName'));
+
+console.log(testParse);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// var test = JSON.stringify(allProducts);
+// //                    (key name , value) variable var test = JSON.stringify(allProducs);
+// localStorage.setItem('fuckface', test);
+
+// var testParse = JSON.parse(localStorage.getItem('test'));
+// console.log(test);
+// console.log(testParse);
+
 // RENDER
 Products.prototype.banana = function(){
   var imageElement = document.createElement('img');
