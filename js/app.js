@@ -1,81 +1,63 @@
 ('use strict');
 
+
 var parent = document.getElementById('cat1');
 var allProducts = [];
 var rounds = 25;
 var zero = 0;
-var totalVotes = 0;
 
 
-function Products(name, extension){
+function Products(name, extension, votes, views){
   this.filePath = `/img/${name}${extension}`;
   this.alt = name;
   this.title = name;
-  this.votes = 0;
-  this.views = 0;
+  this.votes = votes;
+  this.views = views;
   allProducts.push(this);
-
 }
 
-// function getTotals(){
-//   var data = localStorage.getItem('votes');
 
-// //   if(data === null){
-// //     totalVotes = 0;
-
-// //   } else {
-// //     var totalData = JSON.parse(data);
-// //     totalVotes = totalData;
-// //   }
-// //   console.log(getTotals);
-// // }
-// // getTotals();
-// // console.log(getTotals);
-
-new Products('bag','.jpg');
-new Products('banana','.jpg');
-new Products('bathroom','.jpg');
-new Products('boots','.jpg');
-new Products('breakfast','.jpg');
-new Products('bubblegum','.jpg');
-new Products('chair','.jpg');
-new Products('cthulhu','.jpg');
-new Products('dog-duck','.jpg');
-new Products('dragon','.jpg');
-new Products('pen','.jpg');
-new Products('pet-sweep','.jpg');
-new Products('scissors','.jpg');
-new Products('shark','.jpg');
-new Products('sweep','.png');
-new Products('tauntaun','.jpg');
-new Products('unicorn','.jpg');
-new Products('usb','.jpg');
-new Products('water-can','.jpg');
-new Products('wine-glass','.jpg');
-
-
-
-
-//this makes my constructor into a string
-localStorage.setItem('bitch', JSON.stringify(allProducts));
-var testParse = JSON.parse(localStorage.getItem('bitch'));
-console.log(testParse);
-
-
-// //name view votes
-// for( var i=0 ; i < testParse.legnth; i++){
+if(localStorage.getItem('joeRogan')=== null){
+ 
+  new Products('bag','.jpg', 0,0);
+  new Products('banana','.jpg',0,0);
+  new Products('bathroom','.jpg',0,0);
+  new Products('boots','.jpg',0,0);
+  new Products('breakfast','.jpg',0,0);
+  new Products('bubblegum','.jpg',0,0);
+  new Products('chair','.jpg',0,0);
+  new Products('cthulhu','.jpg',0,0);
+  new Products('dog-duck','.jpg',0,0);
+  new Products('dragon','.jpg',0,0);
+  new Products('pen','.jpg',0,0);
+  new Products('pet-sweep','.jpg',0,0);
+  new Products('scissors','.jpg',0,0);
+  new Products('shark','.jpg',0,0);
+  new Products('sweep','.png',0,0);
+  new Products('tauntaun','.jpg',0,0);
+  new Products('unicorn','.jpg',0,0);
+  new Products('usb','.jpg',0,0);
+  new Products('water-can','.jpg',0,0);
+  new Products('wine-glass','.jpg',0,0);
+} else {
+ 
+  var localStorageItems = localStorage.getItem('joeRogan');
+  var productsLocalStorageArray = JSON.parse(localStorageItems);
+  for( var i = 0; i < productsLocalStorageArray.length ; i++){
+    new Products(productsLocalStorageArray[i].title,
+      // productsLocalStorageArray[i].names,
+      productsLocalStorageArray[i].filePath.slice(productsLocalStorageArray[i].filePath.length-4),
+      productsLocalStorageArray[i].votes,
+      productsLocalStorageArray[i].views);
+  }
+}
 
 
 
 
-// var test = JSON.stringify(allProducts);
-// //                    (key name , value) variable var test = JSON.stringify(allProducs);
-// localStorage.setItem('fuckface', test);
 
-// var testParse = JSON.parse(localStorage.getItem('test'));
-// console.log(test);
-// console.log(testParse);
 // RENDER
+// this puts it in html by creating the template
 Products.prototype.banana = function(){
   var imageElement = document.createElement('img');
   imageElement.setAttribute('src', this.filePath);
@@ -112,7 +94,7 @@ function getRandomProduct(){
     randomIndex3 = randomNumber(allProducts.length);
 
   }
- 
+
   allProducts[randomIndex].banana();
   allProducts[randomIndex2].banana();
   allProducts[randomIndex3].banana();
@@ -130,6 +112,7 @@ parent.addEventListener('click', function poop(){
       if(clickedProducts === allProducts[i].title){
         allProducts[i].votes++;
         console.log (zero);
+        // save our allPoducts array in local storage. leaving it here catches each vote
       }
     }
     zero++;
@@ -139,11 +122,12 @@ parent.addEventListener('click', function poop(){
     this.removeEventListener('click', poop);
     for( var j= 0 ; j < allProducts.length; j++){
       // allProducts[j].results();
-
     }
     myNamesArray();
     generateChart();
   }
+
+  localStorage.setItem('joeRogan', JSON.stringify(allProducts));
 });
 // I made this to see if i can render the results in the table.
 // parentElemnt.addEventListener('click',poop);
