@@ -97,18 +97,4 @@ img{
       color: lightcoral ;
   }
 
-/* #card{
-  border: 1px solid black;
-  width: 30px;
-  height: 300px;
-  text-align: center;
-  line-height: 300px;
-  transition: 2s;
-}
-#card:hover{
-  background-color: lightblue;
-  /* transform: rotateX(180deg); */
-  /* transform: skewY(20deg) */
-  transform:translate (300px)
-}
- */
+

@@ -8,7 +8,7 @@ var zero = 0;
 
 
 function Products(name, extension, votes, views){
-  this.filePath = `/img/${name}${extension}`;
+  this.filePath = `img/${name}${extension}`;
   this.alt = name;
   this.title = name;
   this.votes = votes;
@@ -18,7 +18,7 @@ function Products(name, extension, votes, views){
 
 
 if(localStorage.getItem('joeRogan')=== null){
- 
+
   new Products('bag','.jpg', 0,0);
   new Products('banana','.jpg',0,0);
   new Products('bathroom','.jpg',0,0);
@@ -40,7 +40,7 @@ if(localStorage.getItem('joeRogan')=== null){
   new Products('water-can','.jpg',0,0);
   new Products('wine-glass','.jpg',0,0);
 } else {
- 
+
   var localStorageItems = localStorage.getItem('joeRogan');
   var productsLocalStorageArray = JSON.parse(localStorageItems);
   for( var i = 0; i < productsLocalStorageArray.length ; i++){
@@ -68,12 +68,7 @@ Products.prototype.banana = function(){
   this.views++;
 };
 
-// Products.prototype.results = function(){
-//   var elementP= document.createElement('p');
-//   elementP.textContent= `${this.title} had ${this.votes} votes and ${this.views} views`;
-//   parent.appendChild(elementP);
-// };
-//helper function
+
 function randomNumber(max){
   // if I dont add 1 I can't get a 10
   return Math.floor(Math.random() * max);
@@ -105,7 +100,7 @@ function getRandomProduct(){
 getRandomProduct();
 
 //this checks for clicks and targets title. Also adds numbers into votes.
-parent.addEventListener('click', function poop(){
+parent.addEventListener('click', function arrayX(){
   var clickedProducts = event.target.title;
   if(zero < rounds ){
     for(var i= 0; i < allProducts.length; i++){
@@ -119,7 +114,7 @@ parent.addEventListener('click', function poop(){
     getRandomProduct();
   } else{
     //this removes eventListener once the 25 times have looped.
-    this.removeEventListener('click', poop);
+    this.removeEventListener('click', arrayX);
     for( var j= 0 ; j < allProducts.length; j++){
       // allProducts[j].results();
     }
@@ -130,7 +125,7 @@ parent.addEventListener('click', function poop(){
   localStorage.setItem('joeRogan', JSON.stringify(allProducts));
 });
 // I made this to see if i can render the results in the table.
-// parentElemnt.addEventListener('click',poop);
+// parentElemnt.addEventListener('click',arrayX);
 
 
 //chartjs
